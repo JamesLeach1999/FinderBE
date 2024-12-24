@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>FinderBE</name>
+    </assembly>
+    <members>
+        <member name="M:FinderBE.Controllers.UsersController.Get">
+            <summary>
+            This is a simple endpoint used for testing
+            </summary>
+            <returns>Static user object</returns>
+            <response code="200">When the call is successful</response>
+            <response code="500">For any other error</response>
+        </member>
+    </members>
+</doc>
