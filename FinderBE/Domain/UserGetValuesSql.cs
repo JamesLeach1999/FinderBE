@@ -1,39 +1,65 @@
-﻿using FinderBE.Models;
-using MySqlConnector;
-using System.Text;
-
+﻿using FinderBE.Helpers;
+using FinderBE.Models;
+using Microsoft.Data.SqlClient;
+using System.Data;
 namespace FinderBE.Domain;
 
-public class UserGetValuesSql(IConfiguration configuration) : EstablishSqlConnection<User>(configuration), IGetValues<User>
+public class UserGetValuesSql(IConfiguration configuration, ICustomOrm<User> customOrm) : EstablishSqlConnection<User>(configuration), IGetValues<User>
 {
     public async Task<List<User>> GetValues()
     {
         try
         {
-            using var sqlReturnValue = await ExecuteSqlQuery("SELECT * FROM users");
+            using var sqlReader = await ExecuteSqlQuery("SELECT * FROM users");
 
-            var users = new List<User>();
-
-            while (await sqlReturnValue.ReadAsync())
+            var users = await customOrm.MapSqlValues(sqlReader, mapper => new User
             {
-                var userId = new Guid(sqlReturnValue.GetString(0));
-                var username = sqlReturnValue.GetString(1);
-                var password = sqlReturnValue.GetString(2);
-                var email = sqlReturnValue.GetString(3);
-                users.Add(new User
-                {
-                    UserId = userId,
-                    Username = username,
-                    Password = password,
-                    Email = email
-                });
-            }
+                UserId = new Guid(sqlReader.GetString(0)),
+                Username = sqlReader.GetString(1),
+                Password = sqlReader.GetString(2),
+                Email = sqlReader.GetString(3),
+            });
 
             return users;
         }
-        catch (Exception ex) {
+        catch (Exception ex)
+        {
             throw new Exception("error", ex);
         }
-        
+
+    }
+
+    public async Task<User> GetValue(Guid id)
+    {
+        try
+        {
+            var query = "SELECT * FROM users.users WHERE userId = @userId";
+
+            var sqlParams = new Dictionary<string, object>
+            {
+                {"@userId", id }
+            };
+
+            using var sqlReader = await ExecuteSqlQuery(query, sqlParams);
+
+            var parameters = new Dictionary<string, object>
+            {
+                { "@userId", id}
+            };
+
+            var user = await customOrm.MapSqlValues(sqlReader, mapper => new User
+            {
+                UserId = new Guid(sqlReader.GetString(0)),
+                Username = sqlReader.GetString(1),
+                Password = sqlReader.GetString(2),
+                Email = sqlReader.GetString(3),
+            });
+
+            return user == null ? throw new Exception("No user found") : user.FirstOrDefault();
+        }
+        catch (Exception ex)
+        {
+            throw new Exception("Error getting single user", ex);
+        }
     }
 }

@@ -34,13 +34,22 @@ public class EstablishSqlConnection<T> : ISqlDbConnection<T>
         }
     }
 
-    public async Task<MySqlDataReader> ExecuteSqlQuery(string sqlQuery)
+    public async Task<MySqlDataReader> ExecuteSqlQuery(string sqlQuery, Dictionary<string, object>? parameters = null)
     {
         try
         {
             var connection = await OpenConnection();
 
             var command = new MySqlCommand(sqlQuery, connection);
+
+            if (parameters != null)
+            {
+                foreach (var param in parameters)
+                {
+                    command.Parameters.AddWithValue(param.Key, param.Value);
+                }
+            }
+
             var reader = await command.ExecuteReaderAsync();
 
             return reader;

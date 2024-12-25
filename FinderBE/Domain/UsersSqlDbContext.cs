@@ -1,6 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
-using FinderBE.Models;
-using MySql.EntityFrameworkCore;
+﻿using FinderBE.Models;
+using Microsoft.EntityFrameworkCore;
 namespace FinderBE.Domain;
 
 
@@ -12,5 +11,5 @@ public class UsersSqlDbContext : DbContext
            : base(options)
     {
     }
-    
+
 }
