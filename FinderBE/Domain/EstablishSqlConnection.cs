@@ -1,6 +1,8 @@
 ﻿using MySqlConnector;
 using System.Text;
-
+using Dapper;
+using Microsoft.Data.SqlClient;
+using System.Data.SqlClient;
 namespace FinderBE.Domain;
 
 public class EstablishSqlConnection<T> : ISqlDbConnection<T>
@@ -10,6 +12,7 @@ public class EstablishSqlConnection<T> : ISqlDbConnection<T>
     private IConfiguration _configuration;
     public EstablishSqlConnection(IConfiguration configuration)
     {
+        //var t = new SqlConnection
         _configuration = configuration;
         var sb = new StringBuilder();
         sb.Append(_configuration.GetConnectionString("DefaultConnection"));

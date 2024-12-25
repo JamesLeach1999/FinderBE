@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
+
 using FinderBE.Models;
-using MySql.EntityFrameworkCore;
 namespace FinderBE.Domain;
 
 
@@ -8,9 +8,9 @@ public class UsersSqlDbContext : DbContext
 {
     public DbSet<User> Users { get; set; }
 
-    public UsersSqlDbContext(DbContextOptions<UsersSqlDbContext> options)
-           : base(options)
+    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
+        optionsBuilder.UseMySQL("server=localhost;database=users;user=root;password=jadlljames");
     }
-    
+
 }

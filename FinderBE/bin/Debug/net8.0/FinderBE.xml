@@ -12,5 +12,17 @@
             <response code="200">When the call is successful</response>
             <response code="500">For any other error</response>
         </member>
+        <member name="T:FinderBE.Migrations.InitialCreate">
+            <inheritdoc />
+        </member>
+        <member name="M:FinderBE.Migrations.InitialCreate.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:FinderBE.Migrations.InitialCreate.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:FinderBE.Migrations.InitialCreate.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
     </members>
 </doc>

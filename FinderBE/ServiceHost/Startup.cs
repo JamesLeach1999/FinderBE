@@ -1,4 +1,5 @@
 using FinderBE.Domain;
+using FinderBE.Validation;
 using Microsoft.EntityFrameworkCore;
 
 namespace FinderBE.ServiceHost;
@@ -24,7 +25,7 @@ public class Startup
             c.IncludeXmlComments(xmlPath);
         });
         services.AddDomain();
-
+        services.AddValidation();
     }
 
     public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

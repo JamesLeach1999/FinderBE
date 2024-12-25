@@ -7,6 +7,8 @@ public class Program
     public static void Main(string[] args)
     {
         var builder = WebApplication.CreateBuilder(args);
+        builder.Services.AddDbContext<UsersSqlDbContext>();
+
 
         var startup = new Startup(builder.Configuration);
         startup.ConfigureServices(builder.Services);
