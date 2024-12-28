@@ -3,12 +3,20 @@
   "WorkspaceRootPath": "C:\\Users\\jadll\\source\\repos\\FinderBE\\FinderBE\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{53420553-EB8B-40F3-864D-3F927C64C4F8}|FinderBE.csproj|c:\\users\\jadll\\source\\repos\\finderbe\\finderbe\\domain\\establishsqlconnection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{53420553-EB8B-40F3-864D-3F927C64C4F8}|FinderBE.csproj|solutionrelative:domain\\establishsqlconnection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{53420553-EB8B-40F3-864D-3F927C64C4F8}|FinderBE.csproj|c:\\users\\jadll\\source\\repos\\finderbe\\finderbe\\dockerfile||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{53420553-EB8B-40F3-864D-3F927C64C4F8}|FinderBE.csproj|solutionrelative:dockerfile||{8B382828-6202-11D1-8870-0000F87579D2}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{53420553-EB8B-40F3-864D-3F927C64C4F8}|FinderBE.csproj|c:\\users\\jadll\\source\\repos\\finderbe\\finderbe\\domain\\isqldbconnection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{53420553-EB8B-40F3-864D-3F927C64C4F8}|FinderBE.csproj|solutionrelative:domain\\isqldbconnection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{53420553-EB8B-40F3-864D-3F927C64C4F8}|FinderBE.csproj|c:\\users\\jadll\\source\\repos\\finderbe\\finderbe\\docker-compose.yaml||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{53420553-EB8B-40F3-864D-3F927C64C4F8}|FinderBE.csproj|solutionrelative:docker-compose.yaml||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{53420553-EB8B-40F3-864D-3F927C64C4F8}|FinderBE.csproj|c:\\users\\jadll\\source\\repos\\finderbe\\finderbe\\domain\\usergetvaluessql.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{53420553-EB8B-40F3-864D-3F927C64C4F8}|FinderBE.csproj|solutionrelative:domain\\usergetvaluessql.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{53420553-EB8B-40F3-864D-3F927C64C4F8}|FinderBE.csproj|c:\\users\\jadll\\source\\repos\\finderbe\\finderbe\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{53420553-EB8B-40F3-864D-3F927C64C4F8}|FinderBE.csproj|solutionrelative:appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     }
   ],
   "DocumentGroupContainers": [
@@ -17,8 +25,8 @@
       "VerticalTabListWidth": 256,
       "DocumentGroups": [
         {
-          "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "DockedWidth": 218,
+          "SelectedChildIndex": 5,
           "Children": [
             {
               "$type": "Bookmark",
@@ -34,28 +42,54 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "EstablishSqlConnection.cs",
-              "DocumentMoniker": "C:\\Users\\jadll\\source\\repos\\FinderBE\\FinderBE\\Domain\\EstablishSqlConnection.cs",
-              "RelativeDocumentMoniker": "Domain\\EstablishSqlConnection.cs",
-              "ToolTip": "C:\\Users\\jadll\\source\\repos\\FinderBE\\FinderBE\\Domain\\EstablishSqlConnection.cs",
-              "RelativeToolTip": "Domain\\EstablishSqlConnection.cs",
-              "ViewState": "AQIAABsAAAAAAAAAAAAYwCQAAAA3AAAA",
+              "DocumentIndex": 2,
+              "Title": "UserGetValuesSql.cs",
+              "DocumentMoniker": "C:\\Users\\jadll\\source\\repos\\FinderBE\\FinderBE\\Domain\\UserGetValuesSql.cs",
+              "RelativeDocumentMoniker": "Domain\\UserGetValuesSql.cs",
+              "ToolTip": "C:\\Users\\jadll\\source\\repos\\FinderBE\\FinderBE\\Domain\\UserGetValuesSql.cs",
+              "RelativeToolTip": "Domain\\UserGetValuesSql.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-24T19:40:42.218Z",
+              "WhenOpened": "2024-12-28T13:44:56.873Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\jadll\\source\\repos\\FinderBE\\FinderBE\\appsettings.json",
+              "RelativeDocumentMoniker": "appsettings.json",
+              "ToolTip": "C:\\Users\\jadll\\source\\repos\\FinderBE\\FinderBE\\appsettings.json",
+              "RelativeToolTip": "appsettings.json",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABEAAAADAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-12-28T13:34:54.54Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Dockerfile",
+              "DocumentMoniker": "C:\\Users\\jadll\\source\\repos\\FinderBE\\FinderBE\\Dockerfile",
+              "RelativeDocumentMoniker": "Dockerfile",
+              "ToolTip": "C:\\Users\\jadll\\source\\repos\\FinderBE\\FinderBE\\Dockerfile",
+              "RelativeToolTip": "Dockerfile",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABoAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2024-12-28T13:17:42.969Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "ISqlDbConnection.cs",
-              "DocumentMoniker": "C:\\Users\\jadll\\source\\repos\\FinderBE\\FinderBE\\Domain\\ISqlDbConnection.cs",
-              "RelativeDocumentMoniker": "Domain\\ISqlDbConnection.cs",
-              "ToolTip": "C:\\Users\\jadll\\source\\repos\\FinderBE\\FinderBE\\Domain\\ISqlDbConnection.cs",
-              "RelativeToolTip": "Domain\\ISqlDbConnection.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAuwAcAAABvAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-25T11:21:41.003Z",
+              "Title": "docker-compose.yaml",
+              "DocumentMoniker": "C:\\Users\\jadll\\source\\repos\\FinderBE\\FinderBE\\docker-compose.yaml",
+              "RelativeDocumentMoniker": "docker-compose.yaml",
+              "ToolTip": "C:\\Users\\jadll\\source\\repos\\FinderBE\\FinderBE\\docker-compose.yaml",
+              "RelativeToolTip": "docker-compose.yaml",
+              "ViewState": "AQIAAAkAAAAAAAAAAAAAABsAAAAQAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003775|",
+              "WhenOpened": "2024-12-28T13:17:41.502Z",
               "EditorCaption": ""
             }
           ]

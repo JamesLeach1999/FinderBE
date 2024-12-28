@@ -6,7 +6,6 @@ namespace FinderBE.Domain;
 public class EstablishSqlConnection<T> : ISqlDbConnection<T>
 {
     private string _connectionString;
-    private MySqlConnection _connection;
     private IConfiguration _configuration;
     public EstablishSqlConnection(IConfiguration configuration)
     {

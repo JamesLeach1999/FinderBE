@@ -5,7 +5,7 @@ namespace FinderBE.Models;
 public class User
 {
     [Required]
-    public Guid UserId { get; set; }
+    public Guid UserId = Guid.NewGuid();
 
     [Required]
     public string Username { get; set; }
@@ -18,5 +18,5 @@ public class User
 
     public string PhoneNumber { get; set; }
 
-    public DateTime AccountCreatedDate { get; set; }
+    public DateTime AccountCreatedDate  = DateTime.Now;
 }

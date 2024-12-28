@@ -4,15 +4,15 @@ using Microsoft.Data.SqlClient;
 using System.Data;
 namespace FinderBE.Domain;
 
-public class UserGetValuesSql(IConfiguration configuration, ICustomOrm<User> customOrm) : EstablishSqlConnection<User>(configuration), IGetValues<User>
+public class UserGetValuesSql(ISqlDbConnection<User> _sqlDbConnection, ICustomOrm<User> _customOrm) : IGetValues<User>
 {
     public async Task<List<User>> GetValues()
     {
         try
         {
-            using var sqlReader = await ExecuteSqlQuery("SELECT * FROM users");
+            using var sqlReader = await _sqlDbConnection.ExecuteSqlQuery("SELECT * FROM users");
 
-            var users = await customOrm.MapSqlValues(sqlReader, mapper => new User
+            var users = await _customOrm.MapSqlValues(sqlReader, mapper => new User
             {
                 UserId = new Guid(sqlReader.GetString(0)),
                 Username = sqlReader.GetString(1),
@@ -40,14 +40,14 @@ public class UserGetValuesSql(IConfiguration configuration, ICustomOrm<User> cus
                 {"@userId", id }
             };
 
-            using var sqlReader = await ExecuteSqlQuery(query, sqlParams);
+            using var sqlReader = await _sqlDbConnection.ExecuteSqlQuery(query, sqlParams);
 
             var parameters = new Dictionary<string, object>
             {
                 { "@userId", id}
             };
 
-            var user = await customOrm.MapSqlValues(sqlReader, mapper => new User
+            var user = await _customOrm.MapSqlValues(sqlReader, mapper => new User
             {
                 UserId = new Guid(sqlReader.GetString(0)),
                 Username = sqlReader.GetString(1),

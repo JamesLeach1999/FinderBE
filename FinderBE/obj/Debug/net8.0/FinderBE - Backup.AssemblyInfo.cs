@@ -15,7 +15,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("FinderBE - Backup")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e2fa5e57231e7c5d19a295526eb5d3b3ad1936e7")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+13fd632d97cf1b08dcde47eaca8b8791cf15ab2d")]
 [assembly: System.Reflection.AssemblyProductAttribute("FinderBE - Backup")]
 [assembly: System.Reflection.AssemblyTitleAttribute("FinderBE - Backup")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
