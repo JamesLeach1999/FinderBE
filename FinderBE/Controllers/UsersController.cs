@@ -2,6 +2,7 @@
 using FinderBE.Helpers;
 using FinderBE.Models;
 using FluentValidation;
+using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 using System.Net;
 using System.Net.Mime;
@@ -10,7 +11,7 @@ namespace FinderBE.Controllers;
 
 [Route("[controller]")]
 [ApiController]
-public class UsersController(IGetValues<User> userDb, AbstractValidator<Guid> userIdValidator) : Controller
+public class UsersController(IGetValues<User> userDb, ICreateValues<User, object> createUserValues, AbstractValidator<Guid> userIdValidator, AbstractValidator<User> userRequestValidator) : Controller
 {
 
     /// <summary>
@@ -72,7 +73,45 @@ public class UsersController(IGetValues<User> userDb, AbstractValidator<Guid> us
             Console.WriteLine(ex);
             return StatusCode(500);
         }
+    }
 
+    /// <summary>
+    /// Create a user with an email, password and username
+    /// </summary>
+    /// <returns>Confirmation of a newly created user</returns>
+    /// <response code="201">New user successfully created with introductory message</response>
+    /// <response code="400">Validation error with user credentials</response>
+    /// <response code="500">Any other internal error</response>
+    [HttpPost]
+    [Route("CreateUser")]
+    [Produces(MediaTypeNames.Application.Json)]
+    [ProducesResponseType(typeof(User), (int)HttpStatusCode.OK)]
+    [ProducesResponseType((int)HttpStatusCode.BadRequest)]
+    [ProducesResponseType((int)HttpStatusCode.InternalServerError)]
+    public async Task<ActionResult<object>> CreateUser([FromBody] User user)
+    {
+        try
+        {
+            var validUser = await userRequestValidator.ValidateAsync(user);
+
+            if (!validUser.IsValid)
+            {
+                return BadRequest("Invalid user credentials");
+            }
+
+            var creationResult = createUserValues.PostUser(user);
+
+            if(creationResult == null)
+            {
+                return StatusCode(500);
+            }
+
+            return Ok(new { WelcomeMessage = $"Welcome {user.Username}" });
+        }
+        catch (Exception ex) {
+            Console.WriteLine(ex);
+            return StatusCode(500);
+        }
     }
 
     /// <summary>

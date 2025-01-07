@@ -34,7 +34,8 @@ services:
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: jadlljames
-      MYSQL_USER: root
+      MYSQL_PASSWORD: jadlljames
+      MYSQL_USER: newuser
       MYSQL_DATABASE: users
     networks:
       - my-network

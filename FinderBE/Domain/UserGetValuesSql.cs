@@ -1,26 +1,21 @@
 ﻿using FinderBE.Helpers;
 using FinderBE.Models;
 using Microsoft.Data.SqlClient;
+using Dapper;
 using System.Data;
 namespace FinderBE.Domain;
 
-public class UserGetValuesSql(ISqlDbConnection<User> _sqlDbConnection, ICustomOrm<User> _customOrm) : IGetValues<User>
+public class UserGetValuesSql(IDatabaseConnectionFactory<User> _sqlDbConnection, ICustomOrm<User> _customOrm) : IGetValues<User>
 {
     public async Task<List<User>> GetValues()
     {
         try
         {
-            using var sqlReader = await _sqlDbConnection.ExecuteSqlQuery("SELECT * FROM users");
+            using var sqlConnection = _sqlDbConnection.OpenConnection();
 
-            var users = await _customOrm.MapSqlValues(sqlReader, mapper => new User
-            {
-                UserId = new Guid(sqlReader.GetString(0)),
-                Username = sqlReader.GetString(1),
-                Password = sqlReader.GetString(2),
-                Email = sqlReader.GetString(3),
-            });
+            var users = await sqlConnection.QueryAsync<User>("SELECT * FROM users");
 
-            return users;
+            return users.ToList();
         }
         catch (Exception ex)
         {
@@ -29,31 +24,15 @@ public class UserGetValuesSql(ISqlDbConnection<User> _sqlDbConnection, ICustomOr
 
     }
 
-    public async Task<User> GetValue(Guid id)
+    public async Task<User> GetValue(Guid userId)
     {
         try
         {
             var query = "SELECT * FROM users.users WHERE userId = @userId";
 
-            var sqlParams = new Dictionary<string, object>
-            {
-                {"@userId", id }
-            };
+            using var sqlConnection = _sqlDbConnection.OpenConnection();
 
-            using var sqlReader = await _sqlDbConnection.ExecuteSqlQuery(query, sqlParams);
-
-            var parameters = new Dictionary<string, object>
-            {
-                { "@userId", id}
-            };
-
-            var user = await _customOrm.MapSqlValues(sqlReader, mapper => new User
-            {
-                UserId = new Guid(sqlReader.GetString(0)),
-                Username = sqlReader.GetString(1),
-                Password = sqlReader.GetString(2),
-                Email = sqlReader.GetString(3),
-            });
+            var user = await sqlConnection.QueryAsync<User>("SELECT * FROM users.users WHERE userId = @userId", new {userId});
 
             return user == null ? throw new Exception("No user found") : user.FirstOrDefault();
         }
